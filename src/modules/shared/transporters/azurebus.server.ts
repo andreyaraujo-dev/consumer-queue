@@ -36,7 +36,7 @@ export class AzureBusServer extends Server implements CustomTransportStrategy {
         const receiver = this.getOrCreateReceiver(queue);
         receiver.subscribe({
           processMessage: async (message) => {
-            await handler(message.body);
+            await handler(message);
           },
           processError: async (err) => {
             console.log(err);
